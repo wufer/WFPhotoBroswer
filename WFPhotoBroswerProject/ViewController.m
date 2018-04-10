@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
+  //  self.view.backgroundColor = [UIColor blackColor];
     
     
     UIView *subView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -25,10 +25,21 @@
     [self.view addSubview:subView];
     subView.backgroundColor = [UIColor yellowColor];
     
-    WFProgressLayer *progressLayer = [[WFProgressLayer alloc]initWithFrame:subView.bounds];
-     progressLayer.position = CGPointMake(subView.frame.size.width/2,subView.frame.size.height/2);
-    [subView.layer addSublayer:progressLayer];
-    [progressLayer showProgress];
+//    WFProgressLayer *progressLayer = [[WFProgressLayer alloc]initWithFrame:subView.bounds];
+//     progressLayer.position = CGPointMake(subView.frame.size.width/2,subView.frame.size.height/2);
+//    [subView.layer addSublayer:progressLayer];
+//    [progressLayer showProgress];
+    
+    CAShapeLayer *layer = [[CAShapeLayer alloc]init];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 40, 40) byRoundingCorners:UIRectCornerTopLeft cornerRadii:CGSizeMake(20, 20)];
+    layer.path = path.CGPath;
+    [subView.layer addSublayer:layer];
+                          
+                          
+    
+
+    
+    
 }
 
 

@@ -67,8 +67,8 @@
     self.fillColor = [UIColor clearColor].CGColor;// 填充路径颜色
     self.strokeColor = [UIColor whiteColor].CGColor;// 描边色
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
-    //创建路径
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, 2, 2) cornerRadius:20-2];
+    //创建路径  偏移使线在圆内部
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds,2,2) cornerRadius:20-2];
     self.path = path.CGPath;
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
@@ -81,7 +81,7 @@
 
 -(void)showProgress{
     self.isSpinning = YES;
-    [self spinWithAngle:M_PI];
+   // [self spinWithAngle:M_PI];
 }
 
 
@@ -101,7 +101,7 @@
     CABasicAnimation *rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.toValue = @(M_PI-0.5);
-    rotationAnimation.duration = 10;
+    rotationAnimation.duration = 0.4;
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = HUGE;
     [self addAnimation:rotationAnimation forKey:nil];
